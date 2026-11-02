@@ -1,0 +1,828 @@
+.page {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  font-family: "vazir", system-ui, sans-serif;
+  background: var(--ink);
+}
+
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 13, 14, 0.98) 0%,
+    rgba(15, 13, 14, 0.6) 55%,
+    rgba(15, 13, 14, 0.2) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 24px 64px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--sand);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  margin: 18px 0 0 0;
+  font-size: 38px;
+  font-weight: 300;
+  color: var(--cream);
+  max-width: 620px;
+  line-height: 1.35;
+}
+
+.heroTitleBold {
+  font-weight: 800;
+}
+
+.heroDesc {
+  margin: 20px 0 0 0;
+  max-width: 460px;
+  color: rgba(236, 232, 224, 0.55);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+
+.storySection {
+  position: relative;
+  background: var(--ink);
+  padding: 90px 24px 100px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.storySection.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dotBg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(236, 232, 224, 0.03) 1px, transparent 0);
+  background-size: 42px 42px;
+  pointer-events: none;
+}
+
+.storyGrid {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.eyebrowDark {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: var(--sand);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.storyTitle {
+  margin: 0 0 20px 0;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+.storyTitle span {
+  font-weight: 800;
+  color: var(--sand);
+}
+
+.storyDesc {
+  margin: 0;
+  max-width: 480px;
+  color: rgba(236, 232, 224, 0.5);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.statCard {
+  text-align: center;
+  padding: 22px 10px;
+  border-radius: 16px;
+  background: rgba(236, 232, 224, 0.035);
+  border: 1px solid rgba(236, 232, 224, 0.08);
+}
+
+.statValue {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--sand);
+}
+
+.statLabel {
+  margin: 8px 0 0 0;
+  font-size: 11.5px;
+  color: rgba(236, 232, 224, 0.45);
+}
+
+.storyImageWrap {
+  position: relative;
+  min-height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(236, 232, 224, 0.08);
+}
+
+.storyImage {
+  object-fit: cover;
+}
+
+.storyImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 13, 14, 0.85), transparent 55%);
+}
+
+.storyImageCaption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 24px;
+}
+
+.storyImageCaption p {
+  margin: 0;
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.storyImageCaption span {
+  color: rgba(236, 232, 224, 0.5);
+  font-size: 11.5px;
+}
+
+
+.valuesGrid {
+  position: relative;
+  max-width: 1180px;
+  margin: 80px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.valueCard {
+  padding: 30px 26px;
+  border-radius: 20px;
+  background: rgba(236, 232, 224, 0.03);
+  border: 1px solid rgba(236, 232, 224, 0.07);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.valueCard:hover {
+  border-color: rgba(165, 142, 109, 0.35);
+  transform: translateY(-4px);
+}
+
+.valueIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(139, 115, 85, 0.16);
+  color: var(--sand);
+  margin-bottom: 18px;
+}
+
+.valueCard h4 {
+  margin: 0 0 10px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.valueCard p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+  color: rgba(236, 232, 224, 0.45);
+}
+
+
+.journeySection {
+  position: relative;
+  background: var(--cream);
+  padding: 90px 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.journeySection.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.journeyHeader {
+  max-width: 1180px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.eyebrowLight {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: var(--clay);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.journeyTitle {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--ink);
+}
+
+.journeyTitle span {
+  font-weight: 800;
+  color: var(--clay);
+}
+
+.journeySubtitle {
+  margin: 0;
+  max-width: 340px;
+  font-size: 13px;
+  color: var(--umber);
+  line-height: 1.9;
+}
+
+.journeyGrid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+}
+
+.journeyStep {
+  display: flex;
+  flex-direction: column;
+}
+
+.journeyNo {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--clay);
+}
+
+.journeyLine {
+  height: 1px;
+  background: rgba(15, 13, 14, 0.12);
+  margin: 18px 0;
+}
+
+.journeyStep h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.journeyStep p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--umber);
+  max-width: 240px;
+}
+
+
+.teamSection {
+  max-width: 1180px;
+  margin: 96px auto 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.teamSection.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.teamGrid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ==================== بهبود کارت‌های آرایشگر ==================== */
+.teamCard {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 13, 14, 0.1);
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease;
+  background: var(--ink);
+}
+
+.teamCard:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.teamCard .teamImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.teamImage {
+  object-fit: cover;
+  filter: grayscale(35%) brightness(0.9);
+  transition: filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1);
+}
+
+.teamCard:hover .teamImage {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.12);
+}
+
+.teamOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 13, 14, 0.92), transparent 50%);
+  transition: background 0.4s ease;
+  z-index: 1;
+}
+
+.teamCard:hover .teamOverlay {
+  background: linear-gradient(to top, rgba(15, 13, 14, 0.95), rgba(15, 13, 14, 0.3) 60%, transparent 80%);
+}
+
+/* ---------- تاری اضافی روی هاور ---------- */
+.teamCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.teamCard:hover::before {
+  opacity: 1;
+}
+
+.teamInfo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24px 20px 22px;
+  z-index: 3;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.teamCard:hover .teamInfo {
+  transform: translateY(-8px);
+}
+
+.teamName {
+  margin: 0;
+  color: var(--cream);
+  font-size: 15px;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.teamCard:hover .teamName {
+  color: #ffffff;
+}
+
+.teamRole {
+  margin: 4px 0 0 0;
+  color: rgba(236, 232, 224, 0.6);
+  font-size: 11.5px;
+  transition: color 0.3s ease;
+}
+
+.teamCard:hover .teamRole {
+  color: rgba(236, 232, 224, 0.8);
+}
+
+
+.teamMoreBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  z-index: 4;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: rgba(139, 115, 85, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(236, 232, 224, 0.2);
+  border-radius: 30px;
+  padding: 10px 24px;
+  color: var(--cream);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+
+.teamCard:hover .teamMoreBtn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.teamMoreBtn:hover {
+  background: rgba(165, 142, 109, 0.95);
+  border-color: rgba(236, 232, 224, 0.4);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.teamMoreBtn svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.teamMoreBtn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ---------- افکت لبه نورانی روی هاور ---------- */
+.teamCard::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 19px;
+  background: linear-gradient(135deg, 
+    rgba(165, 142, 109, 0.3), 
+    transparent 40%, 
+    transparent 60%, 
+    rgba(165, 142, 109, 0.15));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.teamCard:hover::after {
+  opacity: 1;
+}
+
+
+.joinCard {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--ink);
+  border: 1px solid rgba(236, 232, 224, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.joinCard:hover {
+  border-color: rgba(165, 142, 109, 0.5);
+  transform: translateY(-4px);
+}
+
+.joinGlow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background: radial-gradient(circle at 50% 30%, rgba(139, 115, 85, 0.35), transparent 65%);
+  transition: opacity 0.5s ease;
+}
+
+.joinCard:hover .joinGlow {
+  opacity: 0.8;
+}
+
+.joinPlus {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(236, 232, 224, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  margin-bottom: 18px;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.joinCard:hover .joinPlus {
+  transform: scale(1.1) rotate(90deg);
+  border-color: var(--sand);
+  color: var(--sand);
+}
+
+.joinTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--cream);
+  font-size: 15.5px;
+  font-weight: 700;
+}
+
+.joinTitle span {
+  color: var(--sand);
+}
+
+.joinDesc {
+  position: relative;
+  z-index: 1;
+  margin: 8px 0 0 0;
+  color: rgba(236, 232, 224, 0.45);
+  font-size: 11.5px;
+}
+
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 13, 14, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modalCard {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: #16110d;
+  border: 1px solid rgba(236, 232, 224, 0.1);
+  border-radius: 20px;
+  padding: 30px 26px 26px;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(236, 232, 224, 0.5);
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  color: var(--cream);
+}
+
+.modalTitle {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.modalDesc {
+  margin: 0 0 22px 0;
+  font-size: 13px;
+  color: rgba(236, 232, 224, 0.5);
+  line-height: 1.8;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modalForm input,
+.modalForm select,
+.modalForm textarea {
+  background: rgba(236, 232, 224, 0.04);
+  border: 1px solid rgba(236, 232, 224, 0.12);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--cream);
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s ease;
+}
+
+.modalForm input::placeholder,
+.modalForm textarea::placeholder {
+  color: rgba(236, 232, 224, 0.28);
+}
+
+.modalForm input:focus,
+.modalForm select:focus,
+.modalForm textarea:focus {
+  border-color: var(--sand);
+}
+
+.modalForm select option {
+  background: #1a1512;
+}
+
+.modalSubmit {
+  margin-top: 4px;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to bottom right, var(--clay), var(--sand));
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modalSubmit:hover {
+  transform: translateY(-2px);
+}
+
+/* ==================== بهینه‌سازی برای موبایل ==================== */
+@media (max-width: 1024px) {
+  .storyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .journeyGrid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 440px;
+  }
+
+  .heroTitle {
+    font-size: 28px;
+  }
+
+  .storySection,
+  .journeySection {
+    padding: 64px 16px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .journeyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .teamCard:hover {
+    transform: none !important;
+  }
+  
+  .teamMoreBtn {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+  
+  .teamCard:hover .teamMoreBtn {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .teamInfo {
+    padding: 16px 14px 14px;
+  }
+  
+  .teamName {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storySection,
+  .journeySection,
+  .teamSection,
+  .valueCard,
+  .joinCard,
+  .teamImage,
+  .teamCard,
+  .teamMoreBtn {
+    transition: none !important;
+  }
+  
+  .teamCard:hover {
+    transform: none !important;
+  }
+  
+  .teamCard:hover .teamImage {
+    transform: none !important;
+  }
+  
+  .teamCard:hover .teamMoreBtn {
+    opacity: 0 !important;
+    transform: translate(-50%, 50%) scale(0.8) !important;
+  }
+}

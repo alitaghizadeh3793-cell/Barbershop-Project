@@ -1,0 +1,439 @@
+.footer {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  position: relative;
+  background: linear-gradient(to bottom, #14100d 0%, #0f0d0e 45%, #0a0807 100%);
+  padding: 80px 16px 24px;
+  overflow: hidden;
+  font-family: "vazir", system-ui, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* ---------- المان‌های تزئینی پس‌زمینه ---------- */
+
+.decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.blobTop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 300px;
+  background: rgba(139, 115, 85, 0.05);
+  border-radius: 999px;
+  filter: blur(120px);
+}
+
+.blobBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background: rgba(165, 142, 109, 0.045);
+  border-radius: 999px;
+  filter: blur(100px);
+}
+
+.blobSide {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: rgba(94, 74, 54, 0.06);
+  border-radius: 999px;
+  filter: blur(80px);
+}
+
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(236, 232, 224, 0.02) 1px,
+    transparent 0
+  );
+  background-size: 40px 40px;
+}
+
+.watermark {
+  position: absolute;
+  bottom: 80px;
+  left: 32px;
+  margin: 0;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(236, 232, 224, 0.025);
+  line-height: 1;
+  letter-spacing: 6px;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .watermark {
+    font-size: 160px;
+  }
+}
+
+/* ---------- کانتینر ---------- */
+
+.container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* ---------- گرید بالایی ---------- */
+/* توجه: هیچ ترفند LTR/order‌ای اینجا نیست. کانتینر dir="rtl" داره و
+   مرورگر خودش ترتیب راست‌به‌چپ رو درست می‌چینه. */
+
+.topGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(236, 232, 224, 0.06);
+}
+
+@media (min-width: 768px) {
+  .topGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .topGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.topGridRevealed .col {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.col:nth-child(1) {
+  transition-delay: 0s;
+}
+.col:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.col:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.col:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+/* ---------- ستون درباره ---------- */
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logoBox {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.logoBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, var(--clay), var(--sand));
+  border-radius: 12px;
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.logoLink:hover .logoBg {
+  transform: rotate(-6deg);
+}
+
+.logoInner {
+  position: absolute;
+  inset: 2px;
+  background: var(--ink);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--cream);
+  font-size: 14px;
+}
+
+.logoText {
+  color: var(--cream);
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.logoHighlight {
+  color: var(--sand);
+}
+
+.aboutText {
+  margin: 0;
+  color: rgba(236, 232, 224, 0.4);
+  font-size: 13.5px;
+  line-height: 1.9;
+  max-width: 320px;
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.socialLink {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(236, 232, 224, 0.05);
+  border: 1px solid rgba(236, 232, 224, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(236, 232, 224, 0.4);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.socialLink:hover {
+  background: rgba(var(--brand-rgb), 0.16);
+  border-color: rgba(var(--brand-rgb), 0.4);
+  color: var(--brand);
+  transform: translateY(-2px) scale(1.06);
+}
+
+/* ---------- ستون‌های لینک (سریع / خدمات) ---------- */
+
+.colTitle {
+  margin: 0;
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.colTitleAccent {
+  color: var(--sand);
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(236, 232, 224, 0.4);
+  font-size: 13.5px;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.linkItem:hover {
+  color: var(--sand);
+}
+
+.linkDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(139, 115, 85, 0.4);
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+}
+
+.linkItem:hover .linkDot {
+  background: var(--sand);
+}
+
+/* ---------- ستون تماس ---------- */
+
+.contactList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(236, 232, 224, 0.4);
+  font-size: 13.5px;
+}
+
+.contactItem a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.contactItem a:hover {
+  color: var(--sand);
+}
+
+.contactIcon {
+  color: var(--sand);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ---------- نوار پایین ---------- */
+
+.bottomBar {
+  position: relative;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: rgba(236, 232, 224, 0.3);
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .bottomBar {
+    flex-direction: row;
+  }
+}
+
+.copyright {
+  margin: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .copyright {
+    text-align: right;
+  }
+}
+
+.copyrightHighlight {
+  color: var(--sand);
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.legalLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.legalLink:hover {
+  color: var(--sand);
+}
+
+.decorLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(139, 115, 85, 0.25),
+    transparent
+  );
+}
+
+/* ---------- دکمه برگشت به بالا ---------- */
+
+.backToTop {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--clay);
+  color: var(--cream);
+  border: none;
+  box-shadow: 0 10px 25px rgba(139, 115, 85, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 40;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.backToTopVisible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.backToTop:hover {
+  box-shadow: 0 14px 32px rgba(139, 115, 85, 0.45);
+  transform: scale(1.08) translateY(-2px);
+}
+
+.backToTop:active {
+  transform: scale(0.94);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .col,
+  .socialLink,
+  .backToTop,
+  .logoBg {
+    transition: none;
+  }
+}

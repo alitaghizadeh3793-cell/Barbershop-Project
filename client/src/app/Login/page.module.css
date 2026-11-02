@@ -1,0 +1,325 @@
+.loginBody {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #000000;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--ink);
+  font-family: "vazir", system-ui, sans-serif;
+  padding-top: 90px;
+  box-sizing: border-box;
+}
+
+.loginSection {
+  width: 100%;
+  max-width: 900px;
+  padding: 25px 24px;
+  box-sizing: border-box;
+}
+
+.loginContent {
+  position: relative;
+  background-color: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(236, 232, 224, 0.06);
+}
+
+/* ---------- فرم‌ها ---------- */
+
+.loginFirst {
+  padding: 44px 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+}
+
+.loginFirst h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.loginFirst > div {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 82%;
+  position: relative;
+}
+
+.loginInput {
+  position: relative;
+  width: 100%;
+}
+
+.loginFirst input {
+  padding: 12px 40px 12px 14px;
+  border: 1px solid rgba(15, 13, 14, 0.1);
+  outline: none;
+  background-color: rgba(15, 13, 14, 0.03);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--ink);
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.loginFirst input:focus {
+  border-color: var(--clay);
+  background-color: rgba(236, 232, 224, 0.6);
+}
+
+.loginInput label {
+  position: absolute;
+  right: 40px;
+  top: 13px;
+  color: var(--umber);
+  opacity: 0.55;
+  font-size: 0.95rem;
+  transition: 0.25s ease;
+  pointer-events: none;
+  background: transparent;
+}
+
+.loginInput .line {
+  position: absolute;
+  bottom: -1px;
+  right: 12px;
+  width: 0;
+  height: 2px;
+  background-color: var(--clay);
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+.loginInput input:focus + label,
+.loginInput input:valid + label {
+  top: -10px;
+  right: 10px;
+  font-size: 0.72rem;
+  padding: 0 6px;
+  background: var(--cream);
+  opacity: 1;
+  color: var(--clay);
+  font-weight: 600;
+}
+
+.loginInput input:focus ~ .line {
+  width: calc(100% - 24px);
+}
+
+.loginInput .icon {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  color: var(--clay);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loginInput input:focus ~ .icon {
+  opacity: 1;
+}
+
+/* ---------- متن راهنما و دکمه‌ها ---------- */
+
+.helperText {
+  margin: 0;
+  width: 82%;
+  text-align: right;
+  font-size: 12.5px;
+  color: var(--umber);
+  opacity: 0.75;
+}
+
+.loginFirst button {
+  width: 78%;
+  padding: 13px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: var(--umber);
+  color: var(--cream);
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 10px 24px rgba(94, 74, 54, 0.28);
+}
+
+.loginFirst button:hover {
+  background-color: var(--clay);
+  transform: translateY(-2px);
+}
+
+.loginFirst button:active {
+  transform: translateY(0);
+}
+
+.signupButton {
+  margin-top: 6px;
+}
+
+/* ========================================== */
+/*              باکس قهوه‌ای متحرک             */
+/* ========================================== */
+
+.loginLast,
+.signup {
+  background: linear-gradient(160deg, var(--umber), #402f22);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 0 30px;
+  text-align: center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 10;
+
+  transition: transform 0.7s ease-in-out, border-radius 0.7s ease-in-out;
+}
+
+.loginLast {
+  border-top-right-radius: 30%;
+  border-bottom-right-radius: 30%;
+  transform: translateX(-100%);
+}
+
+.signup {
+  border-top-left-radius: 30%;
+  border-bottom-left-radius: 30%;
+  transform: translateX(0);
+}
+
+.loginTitelH1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.loginTextH3 {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: rgba(236, 232, 224, 0.75);
+}
+
+.loginButtonSignup {
+  margin-top: 8px;
+  padding: 10px 44px;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 700;
+  background-color: transparent;
+  color: var(--cream);
+  border: 1.5px solid rgba(236, 232, 224, 0.6);
+  border-radius: 999px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.loginButtonSignup:hover {
+  background-color: var(--cream);
+  color: var(--umber);
+  border-color: var(--cream);
+}
+
+/* ==================== مرحله کد تأیید ==================== */
+
+.otpWrap {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.backToPhone {
+  align-self: center;
+  background: none;
+  border: none;
+  color: rgba(236, 232, 224, 0.55);
+  font-family: inherit;
+  font-size: 12.5px;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: color 0.2s ease;
+}
+
+.backToPhone:hover {
+  color: var(--sand);
+}
+
+/* ==================== واکنش‌گرا ==================== */
+
+@media (max-width: 768px) {
+  .loginBody {
+    padding-top: 80px;
+  }
+
+  .loginSection {
+    padding: 20px 16px;
+  }
+
+  .loginContent {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    border-radius: 18px;
+  }
+
+  .loginFirst {
+    padding: 36px 0 44px;
+  }
+
+  .loginLast,
+  .signup {
+    position: relative;
+    width: 100%;
+    transform: none !important;
+    border-radius: 0;
+    padding: 36px 20px;
+    top: auto;
+    right: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .loginBody {
+    padding-top: 70px;
+  }
+
+  .loginFirst > div,
+  .helperText,
+  .loginFirst button {
+    width: 92%;
+  }
+
+  .loginFirst h1 {
+    font-size: 26px;
+  }
+}

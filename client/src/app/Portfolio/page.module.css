@@ -1,0 +1,296 @@
+.section {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  position: relative;
+  background: var(--ink);
+  padding: 100px 24px;
+  font-family: "vazir", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==================== هدر بخش ==================== */
+
+.header {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 40px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--sand);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 16px 0 0 0;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.divider {
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--sand);
+  margin: 20px auto;
+}
+
+.subtitle {
+  margin: 0;
+  color: rgba(236, 232, 224, 0.5);
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+/* ==================== چیپ‌های فیلتر ==================== */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 44px;
+}
+
+.chip {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(236, 232, 224, 0.03);
+  border: 1px solid rgba(236, 232, 224, 0.09);
+  color: rgba(236, 232, 224, 0.55);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.chip:hover {
+  border-color: rgba(165, 142, 109, 0.35);
+  color: var(--cream);
+}
+
+.chipActive {
+  background: linear-gradient(to bottom right, var(--clay), var(--sand));
+  border-color: transparent;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ==================== گرید ==================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+.cardWrap {
+  animation: cardIn 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(236, 232, 224, 0.03);
+  border: 1px solid rgba(236, 232, 224, 0.08);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(165, 142, 109, 0.35);
+  transform: translateY(-4px);
+}
+
+/* ---------- کادر مقایسه قبل/بعد ---------- */
+
+.compareBox {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.compareImage {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.afterWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.tag {
+  position: absolute;
+  top: 14px;
+  z-index: 3;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+}
+
+.tagBefore {
+  right: 14px;
+  background: rgba(15, 13, 14, 0.5);
+  color: var(--cream);
+}
+
+.tagAfter {
+  left: 14px;
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.sliderLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  width: 3px;
+  background: var(--cream);
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.sliderHandle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.dragHint {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(15, 13, 14, 0.55);
+  color: var(--cream);
+  font-size: 11px;
+  backdrop-filter: blur(4px);
+  animation: hintPulse 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---------- اطلاعات زیر کارت ---------- */
+
+.cardInfo {
+  padding: 16px 18px;
+}
+
+.styleName {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.barberName {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: var(--sand);
+}
+
+
+.empty {
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 40px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.empty p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.8;
+}
+
+/* ==================== واکنش‌گرا ==================== */
+
+@media (max-width: 640px) {
+  .section {
+    padding: 70px 16px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardWrap,
+  .card,
+  .dragHint {
+    animation: none;
+    transition: none;
+  }
+}

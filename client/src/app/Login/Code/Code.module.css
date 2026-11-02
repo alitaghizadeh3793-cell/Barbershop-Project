@@ -1,0 +1,117 @@
+.bodyCode {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "vazir", system-ui, sans-serif;
+}
+
+.boxContainer {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.boxContainer h2 {
+  color: var(--cream);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.boxCodeContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.boxCodeInput {
+  width: 60px;
+  height: 60px;
+  background: var(--cream);
+  border: 1px solid rgba(236, 232, 224, 0.15);
+  color: var(--ink);
+  border-radius: 12px;
+  outline: none;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.boxCodeInput:focus {
+  border-color: var(--clay);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(139, 115, 85, 0.22);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .boxContainer {
+    gap: 20px;
+  }
+  .boxContainer h2 {
+    font-size: 20px;
+  }
+  .boxCodeContainer {
+    gap: 12px;
+  }
+  .boxCodeInput {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bodyCode {
+    padding: 10px;
+  }
+  .boxContainer {
+    gap: 15px;
+  }
+  .boxContainer h2 {
+    font-size: 18px;
+  }
+  .boxCodeContainer {
+    gap: 8px;
+  }
+  .boxCodeInput {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .boxCodeContainer {
+    gap: 6px;
+  }
+  .boxCodeInput {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,1073 @@
+.page {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  min-height: 100vh;
+  background: var(--ink);
+  font-family: "vazir", system-ui, sans-serif;
+  padding: 80px 20px 100px;
+}
+
+
+/* ============================================================
+   EMPTY BARBERS
+============================================================ */
+
+.emptyBarbers {
+  min-height: 58vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 70px 24px;
+}
+
+.emptyBarbersIcon {
+  width: 76px;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+
+  border: 1px solid rgba(165, 142, 109, 0.45);
+  border-radius: 50%;
+
+  background: rgba(139, 115, 85, 0.12);
+
+  color: var(--sand);
+
+  font-size: 30px;
+}
+
+.emptyBarbersEyebrow {
+  margin-bottom: 14px;
+
+  color: var(--sand);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.emptyBarbersTitle {
+  margin: 0 0 14px;
+
+  color: var(--cream);
+
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.emptyBarbersText {
+  max-width: 480px;
+
+  margin: 0 0 30px;
+
+  color: rgba(236, 232, 224, 0.62);
+
+  font-size: 15px;
+  line-height: 2;
+}
+
+.emptyBarbersBack {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-width: 150px;
+  height: 48px;
+
+  padding: 0 24px;
+
+  border: 1px solid rgba(165, 142, 109, 0.5);
+  border-radius: 8px;
+
+  background: var(--clay);
+
+  color: var(--cream);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.emptyBarbersBack:hover {
+  background: var(--umber);
+
+  border-color: var(--sand);
+
+  transform: translateY(-2px);
+}
+
+.emptyBarbersBack span {
+  font-size: 18px;
+}
+
+.inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+
+.header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--sand);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 14px 0 0 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.subtitle {
+  margin: 12px auto 0;
+  max-width: 460px;
+  font-size: 13.5px;
+  color: rgba(236, 232, 224, 0.5);
+  line-height: 1.9;
+}
+
+/* ==================== نشانگر مراحل ==================== */
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.stepItemWrap {
+  display: flex;
+  align-items: center;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: not-allowed;
+  font-family: inherit;
+  padding: 4px;
+}
+
+.stepItem:not(:disabled) {
+  cursor: pointer;
+}
+
+.stepCircle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(236, 232, 224, 0.06);
+  border: 1px solid rgba(236, 232, 224, 0.15);
+  color: rgba(236, 232, 224, 0.5);
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.stepActive .stepCircle {
+  background: linear-gradient(to bottom right, var(--clay), var(--sand));
+  border-color: transparent;
+  color: var(--ink);
+}
+
+.stepDone .stepCircle {
+  background: rgba(165, 142, 109, 0.18);
+  border-color: rgba(165, 142, 109, 0.4);
+  color: var(--sand);
+}
+
+.stepLabel {
+  font-size: 11.5px;
+  color: rgba(236, 232, 224, 0.45);
+}
+
+.stepActive .stepLabel {
+  color: var(--cream);
+}
+
+.stepLine {
+  width: 40px;
+  height: 1px;
+  background: rgba(236, 232, 224, 0.15);
+  margin: 0 6px;
+  margin-bottom: 22px;
+}
+
+/* ==================== پنل هر مرحله ==================== */
+
+.stepPanel {
+  animation: panelIn 0.4s ease both;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- دکمه برگشت به مرحله قبل ---------- */
+/* یه جای ثابت و همیشه‌یکسان بالای هر پنل (به‌جز مرحله ۱) */
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 22px;
+  padding: 9px 16px 9px 20px;
+  border-radius: 999px;
+  background: rgba(236, 232, 224, 0.04);
+  border: 1px solid rgba(236, 232, 224, 0.12);
+  color: rgba(236, 232, 224, 0.7);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.backBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.backBtn:hover {
+  background: rgba(165, 142, 109, 0.14);
+  border-color: rgba(165, 142, 109, 0.4);
+  color: var(--sand);
+  transform: translateX(2px);
+}
+
+.backBtn:hover svg {
+  transform: translateX(2px);
+}
+
+/* ---------- مرحله ۱: کارت‌های آرایشگر ---------- */
+
+.barberGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.barberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  padding: 22px 16px;
+  border-radius: 18px;
+  background: rgba(236, 232, 224, 0.035);
+  border: 1px solid rgba(236, 232, 224, 0.08);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.barberCard:hover {
+  border-color: rgba(165, 142, 109, 0.4);
+  transform: translateY(-4px);
+  background: rgba(236, 232, 224, 0.06);
+}
+
+.barberImageWrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--sand);
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.barberImage {
+  object-fit: cover;
+}
+
+.barberName {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.barberRole {
+  margin: 2px 0 0 0;
+  font-size: 11.5px;
+  color: rgba(236, 232, 224, 0.45);
+}
+
+/* ---------- مرحله ۲: نوار آرایشگر انتخاب‌شده ---------- */
+
+.selectedBarberBar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(236, 232, 224, 0.035);
+  border: 1px solid rgba(236, 232, 224, 0.08);
+  margin-bottom: 28px;
+}
+
+.selectedBarberAvatar {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--sand);
+}
+
+.selectedBarberName {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.selectedBarberRole {
+  margin: 2px 0 0 0;
+  font-size: 11.5px;
+  color: rgba(236, 232, 224, 0.45);
+}
+
+/* ---------- انتخاب تاریخ ---------- */
+
+.daysRow {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+}
+
+.dayChip {
+  flex-shrink: 0;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(236, 232, 224, 0.03);
+  border: 1px solid rgba(236, 232, 224, 0.09);
+  color: rgba(236, 232, 224, 0.6);
+  font-family: inherit;
+  font-size: 12.5px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.dayChip:hover {
+  border-color: rgba(165, 142, 109, 0.4);
+}
+
+.dayChipActive {
+  background: linear-gradient(to bottom right, var(--clay), var(--sand));
+  border-color: transparent;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ---------- ساعت‌های آزاد ---------- */
+
+.timesWrap {
+  min-height: 120px;
+  margin-bottom: 28px;
+}
+
+.loadingRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 0;
+  color: rgba(236, 232, 224, 0.45);
+  font-size: 13px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(236, 232, 224, 0.2);
+  border-top-color: var(--sand);
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.timesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+}
+
+.timeSlot {
+  padding: 11px 8px;
+  border-radius: 12px;
+  background: rgba(236, 232, 224, 0.03);
+  border: 1px solid rgba(236, 232, 224, 0.09);
+  color: var(--cream);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.timeSlot:hover:not(:disabled) {
+  border-color: rgba(165, 142, 109, 0.45);
+}
+
+.timeSlotActive {
+  background: linear-gradient(to bottom right, var(--clay), var(--sand));
+  border-color: transparent;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.timeSlotDisabled {
+  opacity: 0.3;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* ---------- مرحله ۳: خدمات ---------- */
+
+.serviceGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.serviceCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(236, 232, 224, 0.03);
+  border: 1px solid rgba(236, 232, 224, 0.08);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: right;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.serviceCard:hover {
+  border-color: rgba(165, 142, 109, 0.35);
+}
+
+.serviceCardActive {
+  border-color: var(--sand);
+  background: rgba(165, 142, 109, 0.1);
+}
+
+.serviceTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.serviceDuration {
+  margin: 4px 0 0 0;
+  font-size: 11.5px;
+  color: rgba(236, 232, 224, 0.45);
+}
+
+.servicePrice {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--sand);
+  white-space: nowrap;
+}
+
+.servicePrice span {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: rgba(236, 232, 224, 0.4);
+}
+
+/* ---------- خلاصه یه رزرو (قبل از افزودن به سبد) ---------- */
+
+.summaryCard {
+  padding: 24px;
+  border-radius: 18px;
+  background: linear-gradient(to bottom right, rgba(139, 115, 85, 0.16), rgba(165, 142, 109, 0.06));
+  border: 1px solid rgba(165, 142, 109, 0.3);
+}
+
+.summaryCard h3 {
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.summaryCard ul {
+  list-style: none;
+  margin: 0 0 20px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summaryCard li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.summaryCard li span:first-child {
+  color: rgba(236, 232, 224, 0.5);
+}
+
+.summaryCard li span:last-child {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.summaryTotal {
+  padding-top: 10px;
+  border-top: 1px dashed rgba(236, 232, 224, 0.15);
+}
+
+.summaryTotal span:last-child {
+  color: var(--sand);
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.summaryActions {
+  display: flex;
+  gap: 10px;
+}
+
+.summaryActions .primaryBtn {
+  flex: 1.4;
+}
+
+/* ==================== دکمه‌های عمومی ==================== */
+
+.primaryBtn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(to bottom right, var(--clay), var(--sand));
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ghostBtn {
+  flex: 1;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid rgba(236, 232, 224, 0.18);
+  background: transparent;
+  color: rgba(236, 232, 224, 0.7);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.ghostBtn:hover {
+  border-color: rgba(236, 232, 224, 0.35);
+  color: var(--cream);
+  background: rgba(236, 232, 224, 0.04);
+}
+
+/* ==================== سبد رزروهای در حال انتظار ==================== */
+
+.cart {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px dashed rgba(236, 232, 224, 0.12);
+}
+
+.cartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.cartHeader h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.cartCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--sand);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.clearAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(196, 122, 99, 0.08);
+  border: 1px solid rgba(196, 122, 99, 0.25);
+  color: #c47a63;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.clearAllBtn:hover {
+  background: #c47a63;
+  border-color: #c47a63;
+  color: var(--cream);
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(236, 232, 224, 0.03);
+  border: 1px solid rgba(236, 232, 224, 0.08);
+}
+
+.cartItemAvatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1.5px solid var(--sand);
+}
+
+.cartItemInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.cartItemService {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.cartItemMeta {
+  margin: 3px 0 0 0;
+  font-size: 11.5px;
+  color: rgba(236, 232, 224, 0.45);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cartItemActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cartItemPrice {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--sand);
+  white-space: nowrap;
+}
+
+.iconGhostBtn,
+.iconGhostBtnDanger {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(236, 232, 224, 0.05);
+  border: 1px solid rgba(236, 232, 224, 0.1);
+  color: rgba(236, 232, 224, 0.6);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.iconGhostBtn:hover {
+  color: var(--sand);
+  border-color: rgba(165, 142, 109, 0.4);
+}
+
+.iconGhostBtnDanger:hover {
+  color: #c47a63;
+  border-color: rgba(196, 122, 99, 0.4);
+  background: rgba(196, 122, 99, 0.08);
+}
+
+.cartFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cartTotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: rgba(236, 232, 224, 0.6);
+}
+
+.cartTotal span:last-child {
+  color: var(--cream);
+  font-weight: 800;
+  font-size: 15px;
+}
+
+/* ==================== صفحه موفقیت ==================== */
+
+.successBox {
+  max-width: 420px;
+  margin: 60px auto 0;
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 22px;
+  background: rgba(236, 232, 224, 0.035);
+  border: 1px solid rgba(236, 232, 224, 0.08);
+}
+
+.successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(165, 142, 109, 0.18);
+  color: var(--sand);
+  margin-bottom: 20px;
+}
+
+.successBox h2 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.successBox p {
+  margin: 0 0 26px 0;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: rgba(236, 232, 224, 0.55);
+}
+
+/* ==================== واکنش‌گرا ==================== */
+
+/* ==================== پیشنهادهای آماده ==================== */
+
+.quickSection {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px dashed rgba(236, 232, 224, 0.12);
+}
+
+.quickHeader {
+  text-align: center;
+  max-width: 460px;
+  margin: 0 auto 28px;
+}
+
+.quickHeader h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.quickHeader p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: rgba(236, 232, 224, 0.45);
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+}
+
+.quickCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(236, 232, 224, 0.08);
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.quickCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(165, 142, 109, 0.4);
+  box-shadow: 0 20px 44px rgba(139, 115, 85, 0.25);
+}
+
+.quickRibbon {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--clay);
+  color: var(--cream);
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(139, 115, 85, 0.35);
+}
+
+.quickImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.quickImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.quickCard:hover .quickImage {
+  transform: scale(1.06);
+}
+
+.quickImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 13, 14, 0.55) 0%, transparent 55%);
+}
+
+.quickTimeBadge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(15, 13, 14, 0.45);
+  backdrop-filter: blur(4px);
+  color: var(--cream);
+  font-size: 11px;
+}
+
+.quickIcon {
+  position: absolute;
+  bottom: -20px;
+  left: 18px;
+  z-index: 4;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: var(--clay);
+  border: 1px solid rgba(15, 13, 14, 0.07);
+  box-shadow: 0 8px 18px rgba(15, 13, 14, 0.15);
+}
+
+.quickBody {
+  padding: 32px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.quickName {
+  margin: 0 0 8px 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.quickMeta {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--umber);
+  flex-grow: 1;
+}
+
+.quickFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(15, 13, 14, 0.1);
+}
+
+.quickPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--clay);
+}
+
+.quickCurrency {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--umber);
+}
+
+.quickBtn {
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(139, 115, 85, 0.4);
+  background: transparent;
+  color: var(--umber);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.quickBtn:hover {
+  background: var(--clay);
+  color: var(--cream);
+  border-color: var(--clay);
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 60px 14px 80px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .stepLabel {
+    display: none;
+  }
+
+  .stepLine {
+    width: 20px;
+  }
+
+  .barberGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .summaryActions {
+    flex-direction: column;
+  }
+
+  .cartItemMeta {
+    white-space: normal;
+  }
+
+  .quickGrid {
+    grid-template-columns: 1fr;
+  }
+}

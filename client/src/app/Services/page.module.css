@@ -1,0 +1,788 @@
+/* .page {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  background: var(--ink);
+  font-family: "vazir", system-ui, sans-serif;
+}
+
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 13, 14, 0.7) 0%,
+    rgba(15, 13, 14, 0.9) 65%,
+    var(--ink) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--sand);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 16px 0 0 0;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.divider {
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--sand);
+  margin: 20px auto;
+}
+
+.subtitle {
+  margin: 0;
+  color: rgba(236, 232, 224, 0.55);
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+
+.list {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 56px 0;
+  border-bottom: 1px solid rgba(236, 232, 224, 0.08);
+}
+
+.list .row:last-child {
+  border-bottom: none;
+}
+
+.rowReversed {
+  direction: ltr;
+}
+
+.rowReversed .rowText {
+  direction: rtl;
+}
+
+.rowImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(236, 232, 224, 0.08);
+}
+
+.rowImage {
+  object-fit: cover;
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rowNumber {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(236, 232, 224, 0.3);
+}
+
+.rowIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(139, 115, 85, 0.14);
+  color: var(--sand);
+  margin: 14px 0 18px;
+}
+
+.rowText h2 {
+  margin: 0 0 14px 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.rowText p {
+  margin: 0 0 18px 0;
+  font-size: 14.5px;
+  line-height: 2;
+  color: rgba(236, 232, 224, 0.55);
+  max-width: 420px;
+}
+
+.rowTags {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--sand);
+}
+
+
+@media (max-width: 800px) {
+  .row,
+  .rowReversed {
+    grid-template-columns: 1fr;
+    direction: rtl;
+    gap: 24px;
+    padding: 40px 0;
+  }
+
+  .rowText {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .list {
+    padding: 20px 16px 80px;
+  }
+
+  .rowText h2 {
+    font-size: 23px;
+  }
+} */
+
+
+
+
+
+.page {
+  --clay: #8b7355;
+  --sand: #a58e6d;
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --umber: #5e4a36;
+
+  background: var(--ink);
+  font-family: "vazir", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* ==================== نوار متن متحرک ==================== */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(236, 232, 224, 0.1);
+  padding: 14px 0;
+}
+
+.marqueeBottom {
+  border-bottom: none;
+  border-top: 1px solid rgba(236, 232, 224, 0.1);
+}
+
+.marqueeTrack,
+.marqueeTrackReverse {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.marqueeTrackReverse {
+  animation-name: marqueeScrollReverse;
+  animation-duration: 38s;
+}
+
+.marqueeTrack span,
+.marqueeTrackReverse span {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--sand);
+  padding-inline-end: 0;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeScrollReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* ==================== هیرو ==================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 13, 14, 0.55) 0%,
+    rgba(15, 13, 14, 0.82) 65%,
+    var(--ink) 100%
+  );
+}
+
+.heroGrain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(236, 232, 224, 0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.heroGhostNumber {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  font-size: clamp(140px, 32vw, 460px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(236, 232, 224, 0.05);
+  -webkit-text-stroke: 1px rgba(165, 142, 109, 0.12);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--sand);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 18px 0 0 0;
+  font-size: clamp(40px, 8vw, 84px);
+  font-weight: 800;
+  color: var(--cream);
+  line-height: 1.15;
+}
+
+.titleOutline {
+  display: inline-block;
+  margin-top: 4px;
+  background: linear-gradient(110deg, var(--sand) 20%, var(--cream) 45%, var(--sand) 70%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.divider {
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--sand);
+  margin: 24px auto;
+}
+
+.subtitle {
+  margin: 0;
+  color: rgba(236, 232, 224, 0.6);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.heroScrollHint {
+  position: absolute;
+  z-index: 2;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 46px;
+  background: rgba(236, 232, 224, 0.18);
+  overflow: hidden;
+}
+
+.heroScrollHint span {
+  display: block;
+  width: 100%;
+  height: 16px;
+  background: var(--sand);
+  animation: scrollHint 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollHint {
+  0% { transform: translateY(-16px); }
+  60% { transform: translateY(46px); }
+  100% { transform: translateY(46px); }
+}
+
+/* ==================== سه اصل کاری ==================== */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 84px 24px;
+}
+
+.pillar {
+  position: relative;
+  text-align: center;
+  padding: 0 28px;
+}
+
+.pillarRule {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(236, 232, 224, 0.1);
+}
+
+.pillarIcon {
+  color: var(--sand);
+  margin-bottom: 18px;
+}
+
+.pillar h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.pillar p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+  color: rgba(236, 232, 224, 0.5);
+}
+
+/* ==================== ردیف‌های معرفی ==================== */
+
+.list {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 64px 0;
+  border-bottom: 1px solid rgba(236, 232, 224, 0.08);
+}
+
+.list .row:last-child {
+  border-bottom: none;
+}
+
+.rowReversed {
+  direction: ltr;
+}
+
+.rowReversed .rowText {
+  direction: rtl;
+}
+
+.rowGhostNumber {
+  position: absolute;
+  z-index: 0;
+  top: -18px;
+  inset-inline-start: -6px;
+  font-size: clamp(70px, 9vw, 130px);
+  font-weight: 800;
+  color: rgba(236, 232, 224, 0.04);
+  -webkit-text-stroke: 1px rgba(165, 142, 109, 0.1);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.rowImageWrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(236, 232, 224, 0.08);
+  isolation: isolate;
+}
+
+.rowFrameMark {
+  position: absolute;
+  z-index: 3;
+  inset: -10px;
+  pointer-events: none;
+}
+
+.rowFrameMark::before,
+.rowFrameMark::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+}
+
+.rowFrameMark::before {
+  top: 0;
+  inset-inline-end: 0;
+  border-top: 1.5px solid var(--sand);
+  border-inline-end: 1.5px solid var(--sand);
+}
+
+.rowFrameMark::after {
+  bottom: 0;
+  inset-inline-start: 0;
+  border-bottom: 1.5px solid var(--sand);
+  border-inline-start: 1.5px solid var(--sand);
+}
+
+.rowImage {
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rowImageWrap:hover .rowImage {
+  transform: scale(1.06);
+}
+
+.rowBadge {
+  position: absolute;
+  z-index: 4;
+  top: 16px;
+  inset-inline-start: 16px;
+  background: var(--sand);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.rowText {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rowNumber {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(236, 232, 224, 0.3);
+}
+
+.rowIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(139, 115, 85, 0.14);
+  color: var(--sand);
+  margin: 14px 0 18px;
+}
+
+.rowText h2 {
+  margin: 0 0 14px 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.rowText p {
+  margin: 0 0 18px 0;
+  font-size: 14.5px;
+  line-height: 2;
+  color: rgba(236, 232, 224, 0.55);
+  max-width: 420px;
+}
+
+.featureList {
+  list-style: none;
+  margin: 0 0 22px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.featureList li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: rgba(236, 232, 224, 0.75);
+}
+
+.featureList li svg {
+  flex-shrink: 0;
+  color: var(--sand);
+}
+
+.rowTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tagChip {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--sand);
+  border: 1px solid rgba(165, 142, 109, 0.35);
+  border-radius: 999px;
+  padding: 6px 13px;
+}
+
+/* ---------- ردیف ویژه (پکیج‌ها) ---------- */
+
+.rowFeatured {
+  margin-top: 12px;
+  padding: 40px;
+  border: 1px solid rgba(165, 142, 109, 0.35);
+  border-radius: 28px;
+  background: linear-gradient(160deg, rgba(139, 115, 85, 0.1), rgba(15, 13, 14, 0) 60%);
+  box-shadow: 0 30px 60px -30px rgba(165, 142, 109, 0.35);
+}
+
+/* ==================== امضای پایانی ==================== */
+
+.closing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px 100px;
+}
+
+.seal {
+  position: relative;width: 168px;
+  height: 168px;
+  margin-bottom: 32px;
+}
+
+.sealSvg {
+  width: 100%;
+  height: 100%;
+  animation: sealSpin 42s linear infinite;
+}
+
+@keyframes sealSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sealRing {
+  fill: none;
+  stroke: rgba(165, 142, 109, 0.4);
+  stroke-width: 1;
+}
+
+.sealRingInner {
+  fill: none;
+  stroke: rgba(236, 232, 224, 0.14);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+}
+
+.sealText {
+  font-size: 10.2px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  fill: var(--sand);
+}
+
+.sealCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+}
+
+.closingText {
+  margin: 0;
+  max-width: 380px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 2;
+  color: rgba(236, 232, 224, 0.65);
+}
+
+/* ==================== واکنش‌گرا ==================== */
+
+@media (max-width: 900px) {
+  .pillars {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 64px 24px;
+  }
+
+  .pillarRule {
+    inset-inline-start: 50%;
+    top: 0;
+    bottom: auto;
+    width: 32px;
+    height: 1px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 800px) {
+  .row,
+  .rowReversed {
+    grid-template-columns: 1fr;
+    direction: rtl;
+    gap: 24px;
+    padding: 48px 0;
+  }
+
+  .rowText {
+    align-items: flex-start;
+  }
+
+  .rowGhostNumber {
+    display: none;
+  }
+
+  .rowFeatured {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 78vh;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .heroGhostNumber {
+    font-size: 160px;
+  }
+
+  .list {
+    padding: 20px 16px 80px;
+  }
+
+  .rowText h2 {
+    font-size: 23px;
+  }
+
+  .seal {
+    width: 132px;
+    height: 132px;
+  }
+
+  .sealCenter {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack,
+  .marqueeTrackReverse,
+  .titleOutline,
+  .heroScrollHint span,
+  .sealSvg {
+    animation: none;
+  }
+}

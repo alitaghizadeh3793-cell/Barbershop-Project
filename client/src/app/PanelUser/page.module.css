@@ -1,0 +1,996 @@
+/* .panelWrapper {
+  --bg-main: #f8fafc;
+  --surface: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: #eff6ff;
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  padding: 24px;
+  box-sizing: border-box;
+  font-family: "vazir", system-ui, -apple-system, sans-serif;
+  direction: rtl;
+}
+
+.panelContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  height: calc(100vh - 48px);
+}
+
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  height: 100%;
+  position: sticky;
+  top: 24px;
+  background: var(--surface);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02),
+              0 2px 4px -2px rgba(0, 0, 0, 0.02);
+  overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebarInner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 18px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backButton:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: #bfdbfe;
+  transform: translateY(-1px);
+}
+
+.backIcon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.backButton:hover .backIcon {
+  transform: translateX(4px);
+}
+
+
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px 16px 18px;
+}
+
+.avatarWrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+.editBadge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  color: #ffffff;
+  border: 3px solid var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.editBadge svg {
+  width: 13px;
+  height: 13px;
+}
+
+.editBadge:hover {
+  transform: scale(1.1);
+  background: var(--primary);
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.nameText {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.phoneText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  direction: ltr;
+  font-weight: 500;
+}
+
+.editLink {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.editLink:hover {
+  background: var(--primary-light);
+}
+
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menuTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  padding-right: 8px;
+  text-transform: uppercase;
+}
+
+.menuItem {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  border-radius: 14px;
+  text-align: right;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.menuItem:hover {
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+.menuItem:hover .menuIcon {
+  color: var(--text-primary);
+}
+
+.menuItemActive {
+  background: var(--primary-light) !important;
+  color: var(--primary) !important;
+}
+
+.menuItemActive .menuIcon {
+  color: var(--primary) !important;
+}
+
+
+.content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02),
+              0 2px 4px -2px rgba(0, 0, 0, 0.02);
+}
+
+.contentInner {
+  padding: 32px;
+}
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  animation: overlayFade 0.2s ease;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modalClose {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-main);
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modalClose svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modalClose:hover {
+  color: var(--text-primary);
+  background: var(--border-color);
+}
+
+.modalHeader {
+  margin-bottom: 24px;
+}
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.modalDesc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.formGroup {
+  margin-bottom: 28px;
+}
+
+.modalLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.modalInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text-primary);
+  background: var(--bg-main);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.modalInput:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.modalFooter {
+  display: flex;
+  gap: 12px;
+}
+
+.btnPrimary,
+.btnSecondary {
+  flex: 1;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.btnPrimary {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.btnPrimary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btnSecondary {
+  background: var(--bg-main);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.btnSecondary:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+
+@media (max-width: 900px) {
+  .panelContainer {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .content {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .panelWrapper {
+    padding: 12px;
+  }
+
+  .contentInner {
+    padding: 20px;
+  }
+} */
+
+
+
+
+.panelWrapper {
+  /* ---------- پالت رنگی آرایشگاه مردانه (چرم، طلایی، مشکی، کرم) ---------- */
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --leather: #8b7355;
+  --gold: #a58e6d;
+  --espresso: #5e4a36;
+
+  --bg-main: var(--cream);
+  --surface: #fffdf9;
+  --text-primary: var(--ink);
+  --text-secondary: rgba(15, 13, 14, 0.56);
+  --border-color: rgba(139, 115, 85, 0.22);
+
+  --sidebar-bg-start: #1c1712;
+  --sidebar-bg-end: var(--ink);
+  --sidebar-text: var(--cream);
+  --sidebar-text-muted: rgba(236, 232, 224, 0.55);
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  background-image: radial-gradient(circle at 15% 0%, rgba(165, 142, 109, 0.12), transparent 45%);
+  padding: 24px;
+  /* هدر با position: fixed از فلو خارجه، پس فاصله بالا رو دستی جبران می‌کنیم.
+     مقدار موبایل = ارتفاع واقعی هدر در حالت موبایل (~72px) + کمی فاصله تنفسی.
+     مقدار ۷۶۸px به بالا = ارتفاع واقعی هدر در حالت تبلت/دسکتاپ (~88px) + فاصله تنفسی،
+     دقیقاً هم‌راستا با بریک‌پوینت خود هدر (Header.module.css) تا روی هیچ سایزی رو هم نیفتن. */
+  padding-top: 96px;
+  box-sizing: border-box;
+  font-family: "vazir", system-ui, -apple-system, sans-serif;
+  direction: rtl;
+}
+
+@media (min-width: 768px) {
+  .panelWrapper {
+    padding-top: 112px;
+  }
+}
+
+.panelContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  height: calc(100vh - 48px);
+}
+
+/* ---------- سایدبار (تیره، چرمی، طلایی) ---------- */
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  height: 100%;
+  position: sticky;
+  top: 24px;
+  background: linear-gradient(165deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-end) 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(165, 142, 109, 0.25);
+  box-shadow: 0 20px 40px -18px rgba(15, 13, 14, 0.55);
+  overflow-y: hidden;
+}
+
+.sidebar::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(165, 142, 109, 0.4);
+  border-radius: 999px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #d8cdbc;
+  border-radius: 999px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebarInner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ---------- دکمه بازگشت ---------- */
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 18px;
+  background: rgba(236, 232, 224, 0.06);
+  color: var(--sidebar-text);
+  border: 1px solid rgba(236, 232, 224, 0.14);
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backButton:hover {
+  background: rgba(165, 142, 109, 0.16);
+  color: var(--gold);
+  border-color: rgba(165, 142, 109, 0.4);
+  transform: translateY(-1px);
+}
+
+.backIcon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.backButton:hover .backIcon {
+  transform: translateX(4px);
+}
+
+/* ---------- نوار امضای بارِبرشاپ ---------- */
+
+.stripeAccent {
+  height: 3px;
+  width: 56px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--gold) 0px,
+    var(--gold) 6px,
+    var(--espresso) 6px,
+    var(--espresso) 12px
+  );
+  opacity: 0.85;
+}
+
+/* ---------- کارت پروفایل ---------- */
+
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(236, 232, 224, 0.04);
+  border: 1px solid rgba(236, 232, 224, 0.1);
+  border-radius: 20px;
+  padding: 26px 16px 18px;
+}
+
+.avatarWrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.avatarRing {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--leather) 55%, var(--espresso) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px -6px rgba(165, 142, 109, 0.45);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.editBadge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  border: 3px solid var(--sidebar-bg-end);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.editBadge svg {
+  width: 13px;
+  height: 13px;
+}
+
+.editBadge:hover {
+  transform: scale(1.1);
+  background: var(--cream);
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.nameText {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--sidebar-text);
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.phoneText {
+  font-size: 13px;
+  color: var(--sidebar-text-muted);
+  direction: ltr;
+  font-weight: 500;
+}
+
+.editLink {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--gold);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.editLink:hover {
+  background: rgba(165, 142, 109, 0.14);
+}
+
+/* ---------- منوی تب‌ها ---------- */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menuTitle {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--sidebar-text-muted);
+  margin-bottom: 6px;
+  padding-right: 8px;
+  text-transform: uppercase;
+}
+
+.menuItem {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  border-radius: 14px;
+  text-align: right;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--sidebar-text-muted);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  border-right: 3px solid transparent;
+}
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.menuItem:hover {
+  background: rgba(236, 232, 224, 0.06);
+  color: var(--sidebar-text);
+}
+
+.menuItemActive {
+  background: linear-gradient(90deg, rgba(165, 142, 109, 0.2), rgba(165, 142, 109, 0.05)) !important;
+  color: var(--gold) !important;
+  border-right-color: var(--gold);
+}
+
+.menuItemActive .menuIcon {
+  color: var(--gold) !important;
+}
+
+/* ---------- بخش محتوای اصلی ---------- */
+
+.content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(15, 13, 14, 0.03),
+              0 2px 4px -2px rgba(15, 13, 14, 0.03);
+}
+
+.contentInner {
+  padding: 32px;
+}
+
+/* ==================== پاپ‌آپ ویرایش نام ==================== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 13, 14, 0.55);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  animation: overlayFade 0.2s ease;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 25px 50px -12px rgba(15, 13, 14, 0.35);
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modalClose {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-main);
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modalClose svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modalClose:hover {
+  color: var(--text-primary);
+  background: var(--border-color);
+}
+
+.modalHeader {
+  margin-bottom: 24px;
+}
+
+.modalStripe {
+  height: 3px;
+  width: 40px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--gold) 0px,
+    var(--gold) 6px,
+    var(--leather) 6px,
+    var(--leather) 12px
+  );
+}
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.modalDesc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.formGroup {
+  margin-bottom: 28px;
+}
+
+.modalLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.modalInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text-primary);
+  background: var(--bg-main);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.modalInput:focus {
+  border-color: var(--leather);
+  background: var(--surface);
+  box-shadow: 0 0 0 4px rgba(139, 115, 85, 0.15);
+}
+
+.modalFooter {
+  display: flex;
+  gap: 12px;
+}
+
+.btnPrimary,
+.btnSecondary {
+  flex: 1;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, var(--leather) 0%, var(--espresso) 100%);
+  color: var(--cream);
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(94, 74, 54, 0.3);
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btnSecondary {
+  background: var(--bg-main);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.btnSecondary:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* ---------- واکنش‌گرایی برای موبایل/تبلت ---------- */
+
+@media (max-width: 900px) {
+  .panelContainer {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .content {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .panelWrapper {
+    padding: 12px;
+  }
+
+  .contentInner {
+    padding: 20px;
+  }
+}

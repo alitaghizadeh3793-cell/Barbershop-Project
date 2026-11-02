@@ -1,0 +1,89 @@
+.container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  font-family: "Vazir";
+}
+
+.toast {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.toast i {
+  font-size: 20px;
+}
+
+.error {
+  background: #ef4444;
+}
+
+.success {
+  background: #22c55e;
+}
+
+.warning {
+  background: #f59e0b;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .toast {
+    padding: 10px 12px;
+    gap: 6px;
+
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  .toast i {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toast {
+    padding: 8px 10px;
+    gap: 5px;
+
+    font-size: 11px;
+    border-radius: 6px;
+  }
+
+  .toast i {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,547 @@
+/* .wrapper {
+  --bg-main: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --primary-color: #3b82f6;
+
+  --success-bg: #dcfce7;
+  --success-text: #166534;
+  --warning-bg: #fef9c3;
+  --warning-text: #854d0e;
+  --danger-bg: #fee2e2;
+  --danger-text: #991b1b;
+  --neutral-bg: #f1f5f9;
+  --neutral-text: #475569;
+
+  font-family: "vazir", system-ui, -apple-system, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--bg-main);
+  border-radius: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding: 0 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.totalBadge {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02),
+              0 2px 4px -2px rgba(0, 0, 0, 0.02);
+}
+
+.card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+              0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.cardCancelled {
+  opacity: 0.65;
+  filter: grayscale(0.8);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.serviceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.serviceName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.barberName {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.userIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badgeConfirmed {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+.badgePending {
+  background-color: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.badgeCancelled {
+  background-color: var(--neutral-bg);
+  color: var(--neutral-text);
+}
+
+.cardBody {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--bg-main);
+  padding: 12px 16px;
+  border-radius: 14px;
+}
+
+.metaIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.metaIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+}
+
+.metaContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.metaValue {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.metaValueHighlight {
+  font-size: 14px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.cardFooter {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.cancelBtn:hover {
+  border-color: var(--danger-bg);
+  color: var(--danger-text);
+  background-color: var(--danger-bg);
+}
+
+@media (max-width: 640px) {
+  .cardBody {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .cardHeader {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cancelBtn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .wrapper {
+    padding: 12px;
+  }
+} */
+
+
+
+
+.wrapper {
+  /* ---------- پالت رنگی آرایشگاه مردانه ---------- */
+  --ink: #0f0d0e;
+  --cream: #ece8e0;
+  --leather: #8b7355;
+  --gold: #a58e6d;
+  --espresso: #5e4a36;
+
+  --bg-main: var(--cream);
+  --text-primary: var(--ink);
+  --text-secondary: rgba(15, 13, 14, 0.56);
+  --border-color: rgba(139, 115, 85, 0.22);
+  --card-bg: #fffdf9;
+  --primary-color: var(--leather);
+
+  /* رنگ‌های وضعیت، هماهنگ با پالت گرم */
+  --success-bg: #e7ece1;
+  --success-text: #3f5d3a;
+  --warning-bg: #f4ecd9;
+  --warning-text: #8a5a20;
+  --danger-bg: #f3e4de;
+  --danger-text: #9c4a37;
+  --neutral-bg: #ece7e0;
+  --neutral-text: rgba(15, 13, 14, 0.45);
+
+  font-family: "vazir", system-ui, -apple-system, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 28px 20px 20px;
+  background-color: var(--bg-main);
+  border-radius: 24px;
+  direction: rtl;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  padding: 0 10px;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--leather);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold), var(--espresso));
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.totalBadge {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--espresso);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(15, 13, 14, 0.04);
+  white-space: nowrap;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(15, 13, 14, 0.02),
+              0 2px 4px -2px rgba(15, 13, 14, 0.02);
+}
+
+.card:hover {
+  border-color: rgba(139, 115, 85, 0.45);
+  box-shadow: 0 14px 24px -10px rgba(94, 74, 54, 0.18);
+  transform: translateY(-2px);
+}
+
+.cardCancelled {
+  opacity: 0.65;
+  filter: grayscale(0.5);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.serviceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.serviceName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.barberName {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.userIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--leather);
+  opacity: 0.9;
+}
+
+.badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.badgeConfirmed {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+.badgePending {
+  background-color: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.badgeCancelled {
+  background-color: var(--neutral-bg);
+  color: var(--neutral-text);
+}
+
+.cardBody {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--bg-main);
+  padding: 12px 16px;
+  border-radius: 14px;
+}
+
+.metaIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(15, 13, 14, 0.05);
+}
+
+.metaIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--leather);
+}
+
+.metaContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.metaValue {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.metaValueHighlight {
+  font-size: 14px;
+  color: var(--espresso);
+  font-weight: 700;
+}
+
+.cardFooter {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.cancelBtn:hover {
+  border-color: var(--danger-text);
+  color: var(--danger-text);
+  background-color: var(--danger-bg);
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .cardBody {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cancelBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wrapper {
+    padding: 24px 12px 12px;
+  }
+}

@@ -1,0 +1,144 @@
+.section {
+  position: relative;
+  padding-top: 6rem; /* py-24 */
+  padding-bottom: 6rem; /* py-24 */
+  overflow: hidden;
+  margin-top: 100px;
+  
+  /* متغیرهای رنگی جدید */
+  --color-primary: #8b7355;
+  --color-primary-light: #a58e6d;
+  --color-dark: #0f0d0e;
+  --color-text: #ece8e0;
+  --color-brown-dark: #5e4a36;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  /* استفاده از کد رنگ تیره #0f0d0e با کمی شفافیت برای دیده شدن عکس بک‌گراند */
+  background-color: rgba(15, 13, 14, 0.85); 
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 80rem; /* max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem; /* px-6 */
+  font-family: "vazir", sans-serif; /* font-vazir */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* grid-cols-2 */
+  gap: 3rem; /* gap-12 */
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* gap-5 */
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 700ms; /* duration-700 */
+}
+
+.visible {
+  opacity: 1; /* opacity-100 */
+  transform: translateY(0); /* translate-y-0 */
+}
+
+.hidden {
+  opacity: 0; /* opacity-0 */
+  transform: translateY(1.5rem); /* translate-y-6 */
+}
+
+.numberBox {
+  position: relative;
+  flex-shrink: 0; /* shrink-0 */
+  font-family: "vazir", sans-serif; /* font-vazir */
+}
+
+/* مرزهای تزئینی با رنگ جدید */
+.corner {
+  position: absolute;
+  width: 0.75rem; /* w-3 */
+  height: 0.75rem; /* h-3 */
+  border-color: var(--color-primary); 
+  border-style: solid;
+  border-width: 0;
+}
+
+.topRight {
+  top: 0;
+  right: 0;
+  border-top-width: 2px; /* border-t-2 */
+  border-right-width: 2px; /* border-r-2 */
+}
+
+.topLeft {
+  top: 0;
+  left: 0;
+  border-top-width: 2px; /* border-t-2 */
+  border-left-width: 2px; /* border-l-2 */
+}
+
+.bottomRight {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 2px; /* border-b-2 */
+  border-right-width: 2px; /* border-r-2 */
+}
+
+.bottomLeft {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 2px; /* border-b-2 */
+  border-left-width: 2px; /* border-l-2 */
+}
+
+.numberText {
+  font-size: 52px; /* text-[52px] */
+  font-weight: 900; /* font-black */
+  color: var(--color-text); /* تغییر به رنگ روشن تم */
+  line-height: 1; /* leading-none */
+  padding: 0.25rem 1rem; /* px-4 py-1 */
+  margin: 0;
+  font-variant-numeric: tabular-nums; /* tabular-nums */
+}
+
+.labelText {
+  color: var(--color-primary-light); /* تغییر به رنگ طلایی/قهوه‌ای روشن برای هارمونی بهتر */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.375; /* leading-snug */
+  font-weight: 300; /* font-light */
+  max-width: 80px; /* max-w-[80px] */
+  margin: 0;
+}
+
+/* ================= معادل‌های ریسپانسیو (md و lg در Tailwind) ================= */
+
+@media (min-width: 768px) { /* md */
+  .container {
+    padding-left: 2.5rem; /* md:px-10 */
+    padding-right: 2.5rem; /* md:px-10 */
+  }
+  .grid {
+    gap: 2rem; /* md:gap-8 */
+  }
+  .numberText {
+    font-size: 64px; /* md:text-[64px] */
+  }
+  .labelText {
+    font-size: 1rem; /* md:text-base */
+  }
+}
+
+@media (min-width: 1024px) { /* lg */
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* lg:grid-cols-4 */
+  }
+}

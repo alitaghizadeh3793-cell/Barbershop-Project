@@ -1,0 +1,337 @@
+.hero {
+  --bg-dark: #0f0d0e;
+  --bronze-main: #8b7355;
+  --bronze-light: #a58e6d;
+  --bronze-dark: #5e4a36;
+  --text-light: #ece8e0;
+  --white: #ffffff;
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-dark);
+  font-family: "vazir", system-ui, sans-serif;
+}
+
+/* ---------- اسلایدشو ---------- */
+
+.slides {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slideActive {
+  opacity: 1;
+}
+
+.slideImage {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05);
+}
+
+.overlayHorizontal {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(15, 13, 14, 0.2),
+    rgba(15, 13, 14, 0.75),
+    rgba(15, 13, 14, 0.5)
+  );
+}
+
+.overlayVertical {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(15, 13, 14, 0.95) 0%,
+    rgba(15, 13, 14, 0.2) 40%,
+    transparent 100%
+  );
+}
+
+/* ---------- درخشش نرم (با تم برنزی جدید) ---------- */
+
+.glow {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--bronze-light);
+  opacity: 0.12;
+  filter: blur(160px);
+  z-index: 2;
+}
+
+/* ---------- محتوای اصلی ---------- */
+
+.content {
+  position: absolute;
+  top: 50%;
+  right: 96px;
+  transform: translateY(-45%);
+  max-width: 640px;
+  z-index: 10;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: rgba(236, 232, 224, 0.6);
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heading {
+  margin: 24px 0 0 0;
+  line-height: 0.95;
+  color: var(--text-light);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.headingLine1 {
+  display: block;
+  font-size: 58px;
+  font-weight: 300;
+}
+
+.headingLine2 {
+  display: block;
+  font-size: 70px;
+  font-weight: 800;
+}
+
+.headingAccent {
+  display: block;
+  margin-top: 16px;
+  font-size: 34px;
+  font-weight: 300;
+  color: var(--bronze-light);
+}
+
+.description {
+  margin-top: 30px;
+  max-width: 480px;
+  color: rgba(236, 232, 224, 0.8);
+  line-height: 2;
+  font-size: 14px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.btnPrimary {
+  padding: 13px 30px;
+  border-radius: 999px;
+  background: var(--bronze-main);
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 14.5px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 4px 15px rgba(139, 115, 85, 0.25);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+  background: var(--bronze-light);
+  color: var(--bg-dark);
+}
+
+.btnOutline {
+  padding: 13px 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(165, 142, 109, 0.4);
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 14.5px;
+  text-decoration: none;
+  background: rgba(15, 13, 14, 0.4);
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btnOutline:hover {
+  background: rgba(165, 142, 109, 0.2);
+  border-color: var(--bronze-light);
+  color: var(--white);
+}
+
+/* ---------- برچسب‌های گوشه ---------- */
+
+.bottomLeftLabel {
+  position: absolute;
+  bottom: 40px;
+  left: 96px;
+  color: rgba(236, 232, 224, 0.5);
+  font-size: 11px;
+  letter-spacing: 4px;
+  z-index: 2;
+}
+
+.bottomRightLabel {
+  position: absolute;
+  bottom: 40px;
+  right: 96px;
+  color: var(--bronze-light);
+  opacity: 0.9;
+  font-size: 11px;
+  letter-spacing: 6px;
+  z-index: 2;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(15, 13, 14, 0.6) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- واکنش‌گرا ---------- */
+
+@media (max-width: 1199px) {
+  .content {
+    right: 60px;
+  }
+
+  .headingLine1 {
+    font-size: 48px;
+  }
+
+  .headingLine2 {
+    font-size: 58px;
+  }
+
+  .headingAccent {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .content {
+    right: 40px;
+  }
+
+  .headingLine1 {
+    font-size: 40px;
+  }
+
+  .headingLine2 {
+    font-size: 48px;
+  }
+
+  .headingAccent {
+    font-size: 26px;
+  }
+
+  .description {
+    font-size: 13.5px;
+  }
+
+  .bottomLeftLabel,
+  .bottomRightLabel {
+    left: 40px;
+    right: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    right: 24px;
+    left: 24px;
+    top: 55%;
+    transform: translateY(-50%);
+    max-width: none;
+  }
+
+  .headingLine1 {
+    font-size: 32px;
+  }
+
+  .headingLine2 {
+    font-size: 40px;
+  }
+
+  .headingAccent {
+    font-size: 22px;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btnPrimary,
+  .btnOutline {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bottomLeftLabel,
+  .bottomRightLabel {
+    display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .content {
+    right: 16px;
+    left: 16px;
+  }
+
+  .eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 4px;
+  }
+
+  .headingLine1 {
+    font-size: 26px;
+  }
+
+  .headingLine2 {
+    font-size: 32px;
+  }
+
+  .headingAccent {
+    font-size: 18px;
+  }
+
+  .description {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .btnPrimary,
+  .btnOutline {
+    transition: none;
+  }
+}
